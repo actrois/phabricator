@@ -1,0 +1,54 @@
+# .scrutinizer.yml
+build:
+    tests:
+        override:
+            -
+                command: 'phpunit -c src/tests/phpunit.xml src/tests --coverage-clover=src/tests/clover.xml'
+                coverage:
+                    file: 'src/tests/clover.xml'
+                    format: 'php-clover'
+    environment:
+        timezone: 'Europe/Berlin'
+filter:
+    excluded_paths:
+        - src/tests/*
+        - src/controller/board/*
+        - vendor/*
+tools:
+    external_code_coverage: false
+    php_sim:
+        enabled: true
+        min_mass: 16
+        filter:
+            paths: {  }
+            excluded_paths: {  }
+    php_pdepend:
+        enabled: true
+        configuration_file: null
+        suffixes:
+           - php
+        excluded_dirs: {  }
+        filter:
+            paths: {  }
+            excluded_paths: {  }
+    php_analyzer:
+        enabled: true
+        extensions:
+           - php
+        dependency_paths: {  }
+        filter:
+            paths: {  }
+            excluded_paths: {  }
+        path_configs: {  }
+    php_changetracking:
+        enabled: true
+        bug_patterns:
+            - '\bfix(?:es|ed)?\b'
+        feature_patterns:
+            - '\badd(?:s|ed)?\b'
+            - '\bimplement(?:s|ed)?\b'
+        filter:
+            paths: {  }
+            excluded_paths:
+                - src/tests/*
+                - vendor/*

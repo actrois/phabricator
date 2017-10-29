@@ -1,0 +1,10 @@
+{
+  "project.name" : "sprint",
+  "phabricator.uri": "https://phabricator.wikimedia.org/",
+  "repository.callsign": "PHSP",
+  "unit.engine" : "PhpunitTestEngine",
+  "phpunit_config":  "src/tests/phpunit.xml",
+  "load" : [
+    "src/"
+  ]
+}
